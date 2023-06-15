@@ -1,0 +1,17 @@
+# clang format
+Language: Cpp
+
+BasedOnStyle: Google
+
+# user configuration
+IndentWidth: 4
+ColumnLimit: 1000
+AlignTrailingComments: false
+MaxEmptyLinesToKeep: 2
+SortIncludes : false
+AllowShortFunctionsOnASingleLine : Empty
+AllowShortIfStatementsOnASingleLine : Never
+
+AlignAfterOpenBracket : DontAlign
+AlignArrayOfStructures : Left 
+SortIncludes : false
