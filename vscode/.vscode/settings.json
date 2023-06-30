@@ -46,5 +46,8 @@
         "stdexcept": "cpp",
         "streambuf": "cpp",
         "typeinfo": "cpp"
-    }
+    },
+    "C_Cpp.clang_format_fallbackStyle": "Google",
+    "C_Cpp.clang_format_style": "file:${workspaceRoot}/.vscode/.clang-format",
+    "C_Cpp.formatting": "clangFormat"
 }

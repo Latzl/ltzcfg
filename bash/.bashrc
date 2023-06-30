@@ -128,3 +128,23 @@ if [ -d ~/bin/sh/ltzsh/ ];then
 		export PATH=$HOME/bin/sh/ltzsh/test:$PATH
 	fi
 fi
+
+man() {
+	# LESS_TERMCAP_md=$'\e[01;31m' \
+	# LESS_TERMCAP_me=$'\e[0m' \
+	# LESS_TERMCAP_se=$'\e[0m' \
+	# LESS_TERMCAP_so=$'\e[45;93m' \
+	# LESS_TERMCAP_ue=$'\e[0m' \
+	# LESS_TERMCAP_us=$'\e[01;32m' \
+	export LESS_TERMCAP_mb=$'\e[1;32m'
+	export LESS_TERMCAP_md=$'\e[01;31m'
+	export LESS_TERMCAP_me=$'\e[0m'
+	export LESS_TERMCAP_se=$'\e[0m'
+	export LESS_TERMCAP_so=$'\e[45;93m'
+	export LESS_TERMCAP_ue=$'\e[0m'
+	export LESS_TERMCAP_us=$'\e[01;32m'
+	command man "$@"
+}
+
+export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
+export LESS=" -R -N"
