@@ -1,7 +1,7 @@
 set encoding=utf-8
 set nu
 set relativenumber
-set cursorline
+" set cursorline
 set mouse=a
 set autoindent
 set tabstop=4
