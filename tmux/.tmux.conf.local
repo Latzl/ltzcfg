@@ -450,4 +450,6 @@ set -g prefix C-a
 bind C-a send-prefix
 
 set-window-option -g mode-key vi
+bind -T copy-mode-vi H send -X top-line
+bind -T copy-mode-vi L send -X bottom-line
 
