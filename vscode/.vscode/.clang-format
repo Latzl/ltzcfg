@@ -5,7 +5,8 @@ BasedOnStyle: Google
 
 # user configuration
 IndentWidth: 4
-ColumnLimit: 1000
+# ColumnLimit: 1000
+ColumnLimit: 120
 AlignTrailingComments: false
 MaxEmptyLinesToKeep: 2
 SortIncludes : false
@@ -16,5 +17,5 @@ AlignAfterOpenBracket : DontAlign
 AlignArrayOfStructures : Left 
 SortIncludes : false
 
-AlignConsecutiveAssignments : true
-AlignConsecutiveDeclarations : true
+# AlignConsecutiveAssignments : true
+# AlignConsecutiveDeclarations : true
