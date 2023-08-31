@@ -1,5 +1,6 @@
 set encoding=utf-8
 set fencs=utf8,gbk,gb2312,gb18030
+set fileformats=unix
 
 set number
 set relativenumber
@@ -15,3 +16,4 @@ syntax enable
 
 set clipboard=unnamed
 set hlsearch
+set ignorecase
