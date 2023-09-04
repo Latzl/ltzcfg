@@ -118,8 +118,8 @@ fi
 
 # costumize
 export PATH=~/bin/sh:$PATH
-if [ -f ~/.usrbashrc.sh ]; then
-	source ~/.usrbashrc.sh
+if [ -f ~/.bashrc.local ]; then
+	source ~/.bashrc.local
 fi
 
 if [ -d ~/bin/sh/ltzsh/ ];then

@@ -6,7 +6,7 @@ BasedOnStyle: Google
 # user configuration
 IndentWidth: 4
 # ColumnLimit: 1000
-ColumnLimit: 120
+ColumnLimit: 1200
 AlignTrailingComments: false
 MaxEmptyLinesToKeep: 2
 SortIncludes : false
