@@ -19,3 +19,4 @@ SortIncludes : false
 
 # AlignConsecutiveAssignments : true
 # AlignConsecutiveDeclarations : true
+# BreakBeforeBinaryOperators: All
