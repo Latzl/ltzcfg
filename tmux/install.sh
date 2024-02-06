@@ -2,5 +2,5 @@
 
 THIS_DIR=$(dirname $(readlink -f $0))
 
-ln -s $THIS_DIR/.tmux.conf $HOME
-ln -s $THIS_DIR/.tmux.conf.local $HOME
+ln -sfv $THIS_DIR/.tmux.conf $HOME
+# ln -sfv $THIS_DIR/.tmux.conf.local $HOME
