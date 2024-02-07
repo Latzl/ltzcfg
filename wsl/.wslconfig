@@ -1,8 +1,8 @@
-# see https://learn.microsoft.com/en-us/windows/wsl/wsl-config#wslconfig
+; see https://learn.microsoft.com/en-us/windows/wsl/wsl-config#wslconfig
 [wsl2]
 networkingMode=mirrored
 dnsTunneling=true
-firewall=true
+; firewall=true
 autoProxy=true
 
 [experimental]
