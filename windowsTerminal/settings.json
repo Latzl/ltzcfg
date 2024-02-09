@@ -6,14 +6,41 @@
         {
             "command": 
             {
+                "action": "prevTab"
+            },
+            "keys": "alt+["
+        },
+        {
+            "command": 
+            {
                 "action": "moveFocus",
                 "direction": "down"
             },
             "keys": "alt+j"
         },
         {
+            "command": 
+            {
+                "action": "moveFocus",
+                "direction": "left"
+            },
+            "keys": "alt+h"
+        },
+        {
+            "command": 
+            {
+                "action": "moveFocus",
+                "direction": "right"
+            },
+            "keys": "alt+l"
+        },
+        {
             "command": "openNewTabDropdown",
             "keys": "ctrl+shift+\\"
+        },
+        {
+            "command": "find",
+            "keys": "alt+shift+f"
         },
         {
             "command": 
@@ -21,38 +48,6 @@
                 "action": "copy",
                 "singleLine": false
             }
-        },
-        {
-            "command": 
-            {
-                "action": "resizePane",
-                "direction": "up"
-            },
-            "keys": "ctrl+shift+k"
-        },
-        {
-            "command": "paste"
-        },
-        {
-            "command": 
-            {
-                "action": "splitPane",
-                "split": "auto",
-                "splitMode": "duplicate"
-            },
-            "keys": "alt+shift+d"
-        },
-        {
-            "command": 
-            {
-                "action": "resizePane",
-                "direction": "left"
-            },
-            "keys": "ctrl+shift+h"
-        },
-        {
-            "command": "find",
-            "keys": "alt+shift+f"
         },
         {
             "command": "unbound",
@@ -121,18 +116,13 @@
         {
             "command": 
             {
-                "action": "moveFocus",
-                "direction": "right"
+                "action": "resizePane",
+                "direction": "up"
             },
-            "keys": "alt+l"
+            "keys": "ctrl+shift+k"
         },
         {
-            "command": 
-            {
-                "action": "moveFocus",
-                "direction": "left"
-            },
-            "keys": "alt+h"
+            "command": "paste"
         },
         {
             "command": 
@@ -145,16 +135,19 @@
         {
             "command": 
             {
-                "action": "nextTab"
+                "action": "splitPane",
+                "split": "auto",
+                "splitMode": "duplicate"
             },
-            "keys": "alt+]"
+            "keys": "alt+shift+d"
         },
         {
             "command": 
             {
-                "action": "prevTab"
+                "action": "resizePane",
+                "direction": "left"
             },
-            "keys": "alt+["
+            "keys": "ctrl+shift+h"
         },
         {
             "command": 
@@ -163,6 +156,13 @@
                 "direction": "down"
             },
             "keys": "ctrl+shift+j"
+        },
+        {
+            "command": 
+            {
+                "action": "nextTab"
+            },
+            "keys": "alt+]"
         },
         {
             "command": 
@@ -176,20 +176,13 @@
     "centerOnLaunch": false,
     "copyFormatting": "none",
     "copyOnSelect": false,
-    "defaultProfile": "{7dfddbbf-31d7-4566-9621-23dcf1725dd6}",
+    "defaultProfile": "{24a0533e-913b-5f8c-a5cb-6be85a4c9e70}",
     "language": "en-US",
     "launchMode": "maximized",
-    "newTabMenu": 
-    [
-        {
-            "type": "remainingProfiles"
-        }
-    ],
     "profiles": 
     {
         "defaults": 
         {
-            "adjustIndistinguishableColors": "indexed",
             "colorScheme": "Campbell",
             "cursorShape": "emptyBox",
             "opacity": 81
@@ -197,12 +190,16 @@
         "list": 
         [
             {
-                "commandline": "C:\\Program Files\\Git\\bin\\bash.exe",
-                "guid": "{7dfddbbf-31d7-4566-9621-23dcf1725dd6}",
+                "guid": "{24a0533e-913b-5f8c-a5cb-6be85a4c9e70}",
                 "hidden": false,
-                "icon": "C:\\Program Files\\Git\\git-bash.exe",
-                "name": "Git Bash",
-                "startingDirectory": "%USERPROFILE%"
+                "name": "Ubuntu 18.04.6 LTS",
+                "source": "CanonicalGroupLimited.Ubuntu18.04LTS_79rhkp1fndgsc"
+            },
+            {
+                "guid": "{c6eaf9f4-32a7-5fdc-b5cf-066e8a4b1e40}",
+                "hidden": true,
+                "name": "Ubuntu-18.04",
+                "source": "Windows.Terminal.Wsl"
             },
             {
                 "commandline": "%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
@@ -217,22 +214,12 @@
                 "name": "Command Prompt"
             },
             {
-                "guid": "{b453ae62-4e3d-5e58-b989-0a998ec441b8}",
+                "commandline": "C:\\Program Files\\Git\\bin\\bash.exe",
+                "guid": "{7dfddbbf-31d7-4566-9621-23dcf1725dd6}",
                 "hidden": false,
-                "name": "Azure Cloud Shell",
-                "source": "Windows.Terminal.Azure"
-            },
-            {
-                "guid": "{24a0533e-913b-5f8c-a5cb-6be85a4c9e70}",
-                "hidden": false,
-                "name": "Ubuntu 18.04.6 LTS",
-                "source": "CanonicalGroupLimited.Ubuntu18.04LTS_79rhkp1fndgsc"
-            },
-            {
-                "guid": "{c6eaf9f4-32a7-5fdc-b5cf-066e8a4b1e40}",
-                "hidden": true,
-                "name": "Ubuntu-18.04",
-                "source": "Windows.Terminal.Wsl"
+                "icon": "C:\\Program Files\\Git\\git-cmd.exe",
+                "name": "Git Bash",
+                "startingDirectory": "%USERPROFILE%"
             }
         ]
     },
@@ -469,6 +456,5 @@
             "yellow": "#808000"
         }
     ],
-    "theme": "dark",
-    "themes": []
+    "theme": "dark"
 }
