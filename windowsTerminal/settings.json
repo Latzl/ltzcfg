@@ -19,12 +19,8 @@
             "keys": "alt+j"
         },
         {
-            "command": 
-            {
-                "action": "moveFocus",
-                "direction": "left"
-            },
-            "keys": "alt+h"
+            "command": "find",
+            "keys": "alt+shift+f"
         },
         {
             "command": 
@@ -35,19 +31,24 @@
             "keys": "alt+l"
         },
         {
+            "command": 
+            {
+                "action": "moveFocus",
+                "direction": "left"
+            },
+            "keys": "alt+h"
+        },
+        {
             "command": "openNewTabDropdown",
             "keys": "ctrl+shift+\\"
         },
         {
-            "command": "find",
-            "keys": "alt+shift+f"
-        },
-        {
             "command": 
             {
-                "action": "copy",
-                "singleLine": false
-            }
+                "action": "resizePane",
+                "direction": "up"
+            },
+            "keys": "ctrl+shift+k"
         },
         {
             "command": "unbound",
@@ -116,13 +117,9 @@
         {
             "command": 
             {
-                "action": "resizePane",
-                "direction": "up"
-            },
-            "keys": "ctrl+shift+k"
-        },
-        {
-            "command": "paste"
+                "action": "copy",
+                "singleLine": false
+            }
         },
         {
             "command": 
@@ -131,6 +128,9 @@
                 "direction": "up"
             },
             "keys": "alt+k"
+        },
+        {
+            "command": "paste"
         },
         {
             "command": 
@@ -160,17 +160,17 @@
         {
             "command": 
             {
-                "action": "nextTab"
-            },
-            "keys": "alt+]"
-        },
-        {
-            "command": 
-            {
                 "action": "resizePane",
                 "direction": "right"
             },
             "keys": "ctrl+shift+l"
+        },
+        {
+            "command": 
+            {
+                "action": "nextTab"
+            },
+            "keys": "alt+]"
         }
     ],
     "centerOnLaunch": false,
@@ -190,6 +190,7 @@
         "list": 
         [
             {
+                "commandline": "C:\\Windows\\system32\\wsl.exe -d Ubuntu-18.04",
                 "guid": "{24a0533e-913b-5f8c-a5cb-6be85a4c9e70}",
                 "hidden": false,
                 "name": "Ubuntu 18.04.6 LTS",
