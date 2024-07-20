@@ -1,6 +1,7 @@
 set encoding=utf-8
 set fencs=utf8,gbk,gb2312,gb18030
-set fileformats=unix
+"set fileformats=unix
+set fileformats=unix,dos
 
 set number
 set relativenumber
