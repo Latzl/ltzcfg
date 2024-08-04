@@ -129,6 +129,11 @@ if [ -d ~/bin/sh/ltzsh/ ];then
 	fi
 fi
 
+# tcli
+if [ -f /etc/bash_completion.d/tcli.sh ]; then
+    source /etc/bash_completion.d/tcli.sh
+fi
+
 man() {
 	# LESS_TERMCAP_md=$'\e[01;31m' \
 	# LESS_TERMCAP_me=$'\e[0m' \
