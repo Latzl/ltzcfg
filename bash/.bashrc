@@ -117,23 +117,15 @@ if ! shopt -oq posix; then
 fi
 
 # costumize
-export PATH=~/bin/sh:$PATH
-if [ -f ~/.bashrc.local ]; then
-	source ~/.bashrc.local
-fi
 
-if [ -d ~/bin/sh/ltzsh/ ];then
-	export PATH=$HOME/bin/sh/ltzsh:$PATH
-	if [ -d ~/bin/sh/ltzsh/test/ ];then
-		export PATH=$HOME/bin/sh/ltzsh/test:$PATH
-	fi
-fi
+export PATH=~/bin/:~/bin/sh/:$PATH
 
 # tcli
 if [ -f /etc/bash_completion.d/tcli.sh ]; then
     source /etc/bash_completion.d/tcli.sh
 fi
 
+#man
 man() {
 	# LESS_TERMCAP_md=$'\e[01;31m' \
 	# LESS_TERMCAP_me=$'\e[0m' \
@@ -150,6 +142,39 @@ man() {
 	export LESS_TERMCAP_us=$'\e[01;32m'
 	command man "$@"
 }
-
 export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
 export LESS=" -R"
+
+# locale
+ALL_LOCALE=$(locale -a)
+get_target_locale(){
+	local arr_candidate=$@
+	for lang in ${arr_candidate[@]}; do
+		if echo $ALL_LOCALE | grep -q $lang ;then
+			echo $lang
+			return 0
+		fi
+	done
+	return 1
+}
+
+CANDIDATE_LOCALE_LANG=('zh_CN.UTF-8' 'zh_CN.utf8')
+TARGET_LOCALE_LANG=$(get_target_locale ${CANDIDATE_LOCALE_LANG[@]})
+if [[ -n $TARGET_LOCALE_LANG ]]; then
+    export LANG=$TARGET_LOCALE
+fi
+
+CANDIDATE_LOCALE_LANGUAGE=('en_US.utf8')
+TARGET_LOCALE_LANGUAGE=$(get_target_locale ${CANDIDATE_LOCALE_LANGUAGE[@]})
+if [[ -n $TARGET_LOCALE_LANGUAGE ]]; then
+	export LANGUAGE=$TARGET_LOCALE_LANGUAGE
+fi
+
+# source
+for path in ~/.bashrc.d/*; do
+	file=$(basename $path)
+	if [[ "$file" = ".bashrc" ]]; then
+		continue
+	fi
+	source $path
+done

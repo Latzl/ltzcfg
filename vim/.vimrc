@@ -18,3 +18,5 @@ syntax enable
 set clipboard=unnamed
 set hlsearch
 set ignorecase
+
+set paste
