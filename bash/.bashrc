@@ -161,7 +161,7 @@ get_target_locale(){
 CANDIDATE_LOCALE_LANG=('zh_CN.UTF-8' 'zh_CN.utf8')
 TARGET_LOCALE_LANG=$(get_target_locale ${CANDIDATE_LOCALE_LANG[@]})
 if [[ -n $TARGET_LOCALE_LANG ]]; then
-    export LANG=$TARGET_LOCALE
+    export LANG=$TARGET_LOCALE_LANG
 fi
 
 CANDIDATE_LOCALE_LANGUAGE=('en_US.utf8')
