@@ -127,12 +127,6 @@ fi
 
 #man
 man() {
-	# LESS_TERMCAP_md=$'\e[01;31m' \
-	# LESS_TERMCAP_me=$'\e[0m' \
-	# LESS_TERMCAP_se=$'\e[0m' \
-	# LESS_TERMCAP_so=$'\e[45;93m' \
-	# LESS_TERMCAP_ue=$'\e[0m' \
-	# LESS_TERMCAP_us=$'\e[01;32m' \
 	export LESS_TERMCAP_mb=$'\e[1;32m'
 	export LESS_TERMCAP_md=$'\e[01;31m'
 	export LESS_TERMCAP_me=$'\e[0m'
@@ -142,7 +136,9 @@ man() {
 	export LESS_TERMCAP_us=$'\e[01;32m'
 	command man "$@"
 }
-export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
+if [ -f /usr/share/source-highlight/src-hilite-lesspipe.sh ]; then
+	export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
+fi
 export LESS=" -R"
 
 # locale
@@ -171,10 +167,12 @@ if [[ -n $TARGET_LOCALE_LANGUAGE ]]; then
 fi
 
 # source
-for path in ~/.bashrc.d/*; do
-	file=$(basename $path)
-	if [[ "$file" = ".bashrc" ]]; then
-		continue
-	fi
-	source $path
-done
+if [ -d ~/.bashrc.d/ ]; then
+	for path in ~/.bashrc.d/*; do
+		file=$(basename $path)
+		if [[ "$file" = ".bashrc" ]]; then
+			continue
+		fi
+		source $path
+	done
+fi
