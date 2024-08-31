@@ -1,5 +1,8 @@
 {
     "ui": {
+        "movement":{
+            "mode": "top"
+        },
         "keymap-defs": {
             "default": {
                 "x71": {
