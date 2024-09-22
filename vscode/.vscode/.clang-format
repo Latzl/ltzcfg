@@ -5,17 +5,11 @@ BasedOnStyle: Google
 
 # user configuration
 IndentWidth: 4
-# ColumnLimit: 1000
 ColumnLimit: 120
 AlignTrailingComments: false
 MaxEmptyLinesToKeep: 2
-SortIncludes : false
-AllowShortFunctionsOnASingleLine : Empty
-AllowShortIfStatementsOnASingleLine : Never
+SortIncludes: Never
+AllowShortIfStatementsOnASingleLine: Never
 
-AlignAfterOpenBracket : DontAlign
-AlignArrayOfStructures : Left 
-
-# AlignConsecutiveAssignments : true
-# AlignConsecutiveDeclarations : true
-# BreakBeforeBinaryOperators: All
+AlignAfterOpenBracket: DontAlign
+AlignArrayOfStructures : Left
