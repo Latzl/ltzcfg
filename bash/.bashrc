@@ -168,7 +168,7 @@ fi
 
 # source
 if [ -d ~/.bashrc.d/ ]; then
-	for path in ~/.bashrc.d/*; do
+	for path in $(find ~/.bashrc.d/ -maxdepth 1 ! -type d); do
 		file=$(basename $path)
 		if [[ "$file" = ".bashrc" ]]; then
 			continue
