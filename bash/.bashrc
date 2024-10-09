@@ -120,11 +120,6 @@ fi
 
 export PATH=~/bin/:~/bin/sh/:$PATH
 
-# tcli
-if [ -f /etc/bash_completion.d/tcli.sh ]; then
-    source /etc/bash_completion.d/tcli.sh
-fi
-
 #man
 man() {
 	export LESS_TERMCAP_mb=$'\e[1;32m'
