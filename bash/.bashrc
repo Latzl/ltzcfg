@@ -161,6 +161,9 @@ if [[ -n $TARGET_LOCALE_LANGUAGE ]]; then
 	export LANGUAGE=$TARGET_LOCALE_LANGUAGE
 fi
 
+# editor
+export EDITOR='vim'
+
 # source
 if [ -d ~/.bashrc.d/ ]; then
 	for path in $(find ~/.bashrc.d/ -maxdepth 1 ! -type d); do
