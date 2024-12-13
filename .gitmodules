@@ -4,3 +4,6 @@
 [submodule "xxh/plugins/xxh-plugin-bash-basic"]
 	path = xxh/plugins/xxh-plugin-bash-basic
 	url = git@github.com:Latzl/xxh-plugin-bash-basic.git
+[submodule "xxh/plugins/xxh-plugin-prerun-dotfiles"]
+	path = xxh/plugins/xxh-plugin-prerun-dotfiles
+	url = git@github.com:Latzl/xxh-plugin-prerun-dotfiles.git
