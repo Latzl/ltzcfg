@@ -116,61 +116,8 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# costumize
-
-export PATH=~/bin/:~/bin/sh/:$PATH
-
-#man
-man() {
-	export LESS_TERMCAP_mb=$'\e[1;32m'
-	export LESS_TERMCAP_md=$'\e[01;31m'
-	export LESS_TERMCAP_me=$'\e[0m'
-	export LESS_TERMCAP_se=$'\e[0m'
-	export LESS_TERMCAP_so=$'\e[45;93m'
-	export LESS_TERMCAP_ue=$'\e[0m'
-	export LESS_TERMCAP_us=$'\e[01;32m'
-	command man "$@"
-}
-if [ -f /usr/share/source-highlight/src-hilite-lesspipe.sh ]; then
-	export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
-fi
-export LESS=" -R"
-
-# locale
-ALL_LOCALE=$(locale -a)
-get_target_locale(){
-	local arr_candidate=$@
-	for lang in ${arr_candidate[@]}; do
-		if echo $ALL_LOCALE | grep -q $lang ;then
-			echo $lang
-			return 0
-		fi
-	done
-	return 1
-}
-
-CANDIDATE_LOCALE_LANG=('zh_CN.UTF-8' 'zh_CN.utf8')
-TARGET_LOCALE_LANG=$(get_target_locale ${CANDIDATE_LOCALE_LANG[@]})
-if [[ -n $TARGET_LOCALE_LANG ]]; then
-    export LANG=$TARGET_LOCALE_LANG
-fi
-
-CANDIDATE_LOCALE_LANGUAGE=('en_US.utf8')
-TARGET_LOCALE_LANGUAGE=$(get_target_locale ${CANDIDATE_LOCALE_LANGUAGE[@]})
-if [[ -n $TARGET_LOCALE_LANGUAGE ]]; then
-	export LANGUAGE=$TARGET_LOCALE_LANGUAGE
-fi
-
-# editor
-export EDITOR='vim'
-
-# source
-if [ -d ~/.bashrc.d/ ]; then
-	for path in $(find ~/.bashrc.d/ -maxdepth 1 ! -type d); do
-		file=$(basename $path)
-		if [[ "$file" = ".bashrc" ]]; then
-			continue
-		fi
-		source $path
+if [ -d ~/.bashrc.d ]; then
+	for rcfile in ~/.bashrc.d/*; do
+		source $rcfile
 	done
 fi
