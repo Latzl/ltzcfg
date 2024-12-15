@@ -14,13 +14,20 @@ xxh +RI xxh-plugin-bash-basic+path+${CURR_DIR}/plugins/xxh-plugin-bash-basic
 xxh +RI xxh-plugin-bash-example+path+${CURR_DIR}/plugins/xxh-plugin-bash-example
 
 # dotfiles
-DOTFILES='xxh-plugin-prerun-dotfiles-symbolic-link'
-DOTFILES_HOME="${XHH_HOME}/.xxh/plugins/${DOTFILES}/build/home"
-xxh +RI ${DOTFILES}+path+${CURR_DIR}/plugins/${DOTFILES}
-cp -iv "${LTZCFG_ROOT_DIR}/bash/.bash_profile" "${DOTFILES_HOME}/"
-cp -ivr "${LTZCFG_ROOT_DIR}/bash/.bash_profile.d" "${DOTFILES_HOME}/"
-cp -iv "${LTZCFG_ROOT_DIR}/bash/.bashrc" "${DOTFILES_HOME}/"
-cp -ivr "${LTZCFG_ROOT_DIR}/bash/.bashrc.d" "${DOTFILES_HOME}/"
-cp -iv "${LTZCFG_ROOT_DIR}/vim/.vimrc" "${DOTFILES_HOME}/"
-cp -iv "${LTZCFG_ROOT_DIR}/tmux/.tmux.conf" "${DOTFILES_HOME}/"
-cp -iv "${LTZCFG_ROOT_DIR}/tmux/.tmux.conf.plugins" "${DOTFILES_HOME}/"
+# symbolic link
+PLUGIN_NAME='xxh-plugin-prerun-dotfiles-symbolic-link'
+DST_DIR="${XHH_HOME}/.xxh/plugins/${PLUGIN_NAME}/build/home"
+xxh +RI ${PLUGIN_NAME}+path+${CURR_DIR}/plugins/${PLUGIN_NAME}
+cp -iv "${LTZCFG_ROOT_DIR}/bash/.bash_profile" "${DST_DIR}/"
+cp -ivr "${LTZCFG_ROOT_DIR}/bash/.bash_profile.d" "${DST_DIR}/"
+cp -iv "${LTZCFG_ROOT_DIR}/bash/.bashrc" "${DST_DIR}/"
+cp -ivr "${LTZCFG_ROOT_DIR}/bash/.bashrc.d" "${DST_DIR}/"
+cp -iv "${LTZCFG_ROOT_DIR}/vim/.vimrc" "${DST_DIR}/"
+cp -iv "${LTZCFG_ROOT_DIR}/tmux/.tmux.conf" "${DST_DIR}/"
+cp -iv "${LTZCFG_ROOT_DIR}/tmux/.tmux.conf.plugins" "${DST_DIR}/"
+
+# put once
+PLUGIN_NAME='xxh-plugin-prerun-dotfiles-put-once'
+DST_DIR="${XHH_HOME}/.xxh/plugins/${PLUGIN_NAME}/build/home"
+xxh +RI ${PLUGIN_NAME}+path+${CURR_DIR}/plugins/${PLUGIN_NAME}
+cp -ivr "${LTZCFG_ROOT_DIR}/tmux/.tmux" "${DST_DIR}/"
