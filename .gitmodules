@@ -1,9 +1,6 @@
 [submodule "xxh/shells/xxh-shell-bash"]
 	path = xxh/shells/xxh-shell-bash
 	url = https://github.com/xxh/xxh-shell-bash.git
-[submodule "tmux/.tmux/plugins/tpm"]
-	path = tmux/.tmux/plugins/tpm
-	url = https://github.com/tmux-plugins/tpm.git
 [submodule "tmux/.tmux/plugins/tmux-sensible"]
 	path = tmux/.tmux/plugins/tmux-sensible
 	url = https://github.com/tmux-plugins/tmux-sensible.git
