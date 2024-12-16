@@ -21,6 +21,8 @@ do
     cp -R $CDIR/$f $build_dir/
 done
 
+exit $?
+
 if [ -x "$(command -v pip)" ]; then
 
   PYTHONUSERBASE=$build_dir/home/.local pip install --user -I -r pip-requirements.txt
