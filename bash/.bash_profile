@@ -2,8 +2,12 @@ if [ ! -n "$BASH_VERSION" ]; then
 	return
 fi
 
-if [ -f "$HOME/.bashrc" ]; then
-	source $HOME/.bashrc
+if [ -d "$HOME/bin" ] ; then
+	PATH="$HOME/bin:$PATH"
+fi
+
+if [ -d "$HOME/.local/bin" ] ; then
+	PATH="$HOME/.local/bin:$PATH"
 fi
 
 if [ -d "$HOME/.bash_profile.d" ]; then
@@ -12,10 +16,6 @@ if [ -d "$HOME/.bash_profile.d" ]; then
 	done
 fi
 
-if [ -d "$HOME/bin" ] ; then
-	PATH="$HOME/bin:$PATH"
-fi
-
-if [ -d "$HOME/.local/bin" ] ; then
-	PATH="$HOME/.local/bin:$PATH"
+if [ -f "$HOME/.bashrc" ]; then
+	source $HOME/.bashrc
 fi
