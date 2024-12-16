@@ -1,0 +1,30 @@
+CompileFlags:
+  Compiler: /usr/bin/gcc
+  Add: []
+
+Diagnostics:
+  UnusedIncludes: None
+
+---
+If:
+  PathMatch: [.*/Darwin/.*]
+CompileFlags:
+  Add: [-xnotparsethis, -Wunused]
+
+---
+If:
+  PathMatch: [.*\.c$]
+CompileFlags:
+  Add: [-xc]
+
+---
+If:
+  PathMatch: [.*\.cpp$, .*\.hpp$]
+CompileFlags:
+  Add: [-xc++, -std=c++14, -Wall]
+
+---
+If:
+  PathMatch: [.*/tcli.*/.*]
+CompileFlags:
+  Add: [-fno-access-control, -DTCLI_RES_DIR_PREFIX="_res"]
