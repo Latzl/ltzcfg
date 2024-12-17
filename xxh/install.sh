@@ -8,28 +8,21 @@ fi
 CURR_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 LTZCFG_ROOT_DIR="$(realpath ${CURR_DIR}/..)"
 LTZCFG_XXH_HOME="${LTZCFG_ROOT_DIR}/xxh/home/.xxh"
+LTZCFG_XXH_PKG_DIR_SHELL="${LTZCFG_XXH_HOME}/.xxh/shells"
+LTZCFG_XXH_PKG_DIR_PLUGINS="${LTZCFG_XXH_HOME}/.xxh/plugins"
 XXH_HOME=~/.xxh
+XXH_PKG_DIR_SHELL="${XXH_HOME}/.xxh/shells"
+XXH_PKG_DIR_PLUGINS="${XXH_HOME}/.xxh/plugins"
 
-PLUGIN_NAME='xxh-shell-bash'
-xxh +RI ${PLUGIN_NAME}+path+${LTZCFG_XXH_HOME}/.xxh/shells/${PLUGIN_NAME}
-PLUGIN_NAME='xxh-plugin-bash-basic'
-xxh +RI ${PLUGIN_NAME}+path+${LTZCFG_XXH_HOME}/.xxh/plugins/${PLUGIN_NAME}
-PLUGIN_NAME='xxh-plugin-bash-example'
-xxh +RI ${PLUGIN_NAME}+path+${LTZCFG_XXH_HOME}/.xxh/plugins/${PLUGIN_NAME}
+for pkg_path in $(find {${LTZCFG_XXH_PKG_DIR_SHELL},${LTZCFG_XXH_PKG_DIR_PLUGINS}}/* -maxdepth 0 -type d); do
+	echo ${pkg_path}
+	pkg_name="$(basename ${pkg_path})"
+	xxh +RI ${pkg_name}+path+${pkg_path}
+done
 
 # dotfiles
 shopt -s dotglob
-# symbolic link
-PLUGIN_NAME='xxh-plugin-prerun-dotfiles-symbolic-link'
-DST_DIR="${XXH_HOME}/.xxh/plugins/${PLUGIN_NAME}/build/home"
-xxh +RI ${PLUGIN_NAME}+path+${LTZCFG_XXH_HOME}/.xxh/plugins/${PLUGIN_NAME}
-cp -ir ${LTZCFG_ROOT_DIR}/bash/home/* "${DST_DIR}/"
-cp -ir ${LTZCFG_ROOT_DIR}/vim/home/* "${DST_DIR}/"
-cp -ir "${LTZCFG_ROOT_DIR}/tmux/home/.tmux.conf" "${DST_DIR}/"
-cp -ir "${LTZCFG_ROOT_DIR}/tmux/home/.tmux.conf.plugins" "${DST_DIR}/"
-
-# put once
-PLUGIN_NAME='xxh-plugin-prerun-dotfiles-put-once'
-DST_DIR="${XXH_HOME}/.xxh/plugins/${PLUGIN_NAME}/build/home"
-xxh +RI ${PLUGIN_NAME}+path+${LTZCFG_XXH_HOME}/.xxh/plugins/${PLUGIN_NAME}
-cp -ir "${LTZCFG_ROOT_DIR}/tmux/home/.tmux" "${DST_DIR}/"
+pkg_name='xxh-plugin-prerun-dotfiles'
+dst_dir="${XXH_PKG_DIR_PLUGINS}/${pkg_name}/build/home"
+xxh +RI ${pkg_name}+path+${LTZCFG_XXH_PKG_DIR_PLUGINS}/${pkg_name}
+cp -irvL ${LTZCFG_ROOT_DIR}/dotfiles/linux/home/* "${dst_dir}/"

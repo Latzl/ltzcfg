@@ -21,6 +21,9 @@ do
     cp -R $CDIR/$f $build_dir/
 done
 
+cp -r $CDIR/prerun.d $build_dir/
+
+# skip pip
 exit $?
 
 if [ -x "$(command -v pip)" ]; then

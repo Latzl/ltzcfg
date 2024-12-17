@@ -1,0 +1,10 @@
+# l: symbolic link, o: put once
+.bash_profile;l
+.bash_profile.d;l
+.bashrc;l
+.bashrc.d;l
+.vimrc;l
+.tmux.conf;l
+.tmux.conf.plugins;l
+.tmux/plugins;o
+.config/lnav;l
