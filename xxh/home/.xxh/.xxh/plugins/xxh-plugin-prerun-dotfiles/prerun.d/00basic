@@ -6,5 +6,5 @@
 .vimrc;l
 .tmux.conf;l
 .tmux.conf.plugins;l
-.tmux/plugins;o
+.tmux/plugins;l
 .config/lnav;l
