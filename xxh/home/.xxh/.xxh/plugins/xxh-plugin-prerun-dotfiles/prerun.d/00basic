@@ -7,4 +7,5 @@
 .tmux.conf;l
 .tmux.conf.plugins;l
 .tmux/plugins;l
-.config/lnav;l
+.config/lnav/configs;l
+.config/lnav/formats;l

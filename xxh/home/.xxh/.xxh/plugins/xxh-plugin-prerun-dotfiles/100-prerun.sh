@@ -27,9 +27,18 @@ _parse_prerun_list(){
 	local dst_path=${DST_DIR}/${src_rpath}
 	case $_type in
 		l)  # symbolic link
-			mkdir -p $(dirname ${dst_path})
-			# TODO will create link under dst_path if it's dir
-			ln -sfn $src_path $dst_path
+			if [ ! -e $dst_path ]; then
+				# just ln if dst_path is not exist
+				mkdir -p $(dirname ${dst_path})
+				ln -sf $src_path $dst_path
+			else
+				local src_path_real=$(realpath $src_path)
+				local dst_path_real=$(realpath $dst_path)
+				if [ "$src_path_real" != "$dst_path_real" ]; then
+					# error if dst_path not link to src_path
+					echo "$dst_path is already exist but not link to xxh dotfiles" >&2
+				fi
+			fi
 			;;
 		o)  # put once
 			if ! $PUT_ONCE_DONE && [ ! -e $dst_path ]; then

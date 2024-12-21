@@ -9,7 +9,10 @@ ColumnLimit: 120
 AlignTrailingComments: false
 MaxEmptyLinesToKeep: 2
 SortIncludes: Never
+AllowShortFunctionsOnASingleLine: Empty
 AllowShortIfStatementsOnASingleLine: Never
 
 AlignAfterOpenBracket: DontAlign
-AlignArrayOfStructures : Left
+AlignArrayOfStructures: Left
+
+ReflowComments: false
