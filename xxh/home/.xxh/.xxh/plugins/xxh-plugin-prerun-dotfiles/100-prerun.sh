@@ -1,9 +1,9 @@
 CURR_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
 if [[ $XDG_CACHE_HOME ]]; then
-  done_file=$XDG_CACHE_HOME/xxh-plugin-prerun-dotfiles-put-once-done
+  done_file=$XDG_CACHE_HOME/xxh-plugin-prerun-dotfiles-done
 else
-  done_file=$XXH_HOME/.xxh-plugin-prerun-dotfiles-put-once-done
+  done_file=$XXH_HOME/.xxh-plugin-prerun-dotfiles-done
 fi
 
 PUT_ONCE_DONE=false
