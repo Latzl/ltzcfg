@@ -25,5 +25,5 @@ mkdir -p "${CF_MOD_DIR}"
 ln -sv "${MOD_CF_HOME}" "${CF_MOD_DIR}/home"
 
 mkdir -p ~/bin
-# install ${CURR_DIR}/confiles.sh ~/bin/
-ln -svf "${CURR_DIR}/confiles.sh" ~/bin/
+install ${CURR_DIR}/confiles.sh ~/bin/
+# ln -svf "${CURR_DIR}/confiles.sh" ~/bin/
