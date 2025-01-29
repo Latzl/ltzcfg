@@ -1,12 +1,12 @@
 [submodule "xxh/home/.xxh/.xxh/shells/xxh-shell-bash"]
 	path = xxh/home/.xxh/.xxh/shells/xxh-shell-bash
 	url = https://github.com/xxh/xxh-shell-bash.git
-[submodule "tmux/.tmux/plugins/tmux-sensible"]
-	path = tmux/home/.tmux/plugins/tmux-sensible
-	url = https://github.com/tmux-plugins/tmux-sensible.git
-[submodule "tmux/.tmux/plugins/tmux-resurrect"]
-	path = tmux/home/.tmux/plugins/tmux-resurrect
-	url = https://github.com/tmux-plugins/tmux-resurrect.git
-[submodule "tmux/.tmux/plugins/tpm"]
-	path = tmux/home/.tmux/plugins/tpm
+[submodule "confiles/mods/base/home/.tmux/plugins/tpm"]
+	path = confiles/mods/base/home/.tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm.git
+[submodule "confiles/mods/base/home/.tmux/plugins/tmux-resurrect"]
+	path = confiles/mods/base/home/.tmux/plugins/tmux-resurrect
+	url = https://github.com/tmux-plugins/tmux-resurrect.git
+[submodule "confiles/mods/base/home/.tmux/plugins/tmux-sensible"]
+	path = confiles/mods/base/home/.tmux/plugins/tmux-sensible
+	url = https://github.com/tmux-plugins/tmux-sensible.git
