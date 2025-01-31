@@ -96,6 +96,17 @@ if $OPT_VERBOSE; then
 	echo "DST_ARCH=$DST_ARCH"
 fi
 
+get_mod_bin_dir(){
+	local mod_dir="$1"
+	local mod_name="$(basename "$mod_dir")"
+	local mod_bin_dir="${HOME}/.confiles/mods/.${mod_name}-bin/${DST_OS}/${DST_ARCH}"
+	if [ -d "$mod_bin_dir" ]; then
+		echo "$mod_bin_dir"
+		return 0
+	fi
+	return 1
+}
+
 cf_status() {
 	local mod_dir="$1"
 	local dst_dir="$2"
@@ -125,9 +136,8 @@ status_all() {
 		cf_status "$mod_dir" "$dst_dir"
 
 		# bin
-		local mod_name="$(basename "$mod_dir")"
-		local mod_bin_dir="${HOME}/.confiles/mods/.${mod_name}-bin/${DST_OS}/${DST_ARCH}"
-		if [ -d "$mod_bin_dir" ]; then
+		local mod_bin_dir="$(get_mod_bin_dir "$mod_dir")"
+		if [ -n "$mod_bin_dir" ]; then
 			echo ">>> $mod_bin_dir"
 			cf_status "$mod_bin_dir" "$dst_dir"
 		fi
@@ -141,9 +151,8 @@ apply_all() {
 		cf_apply "$mod_dir" "$dst_dir"
 
 		# bin
-		local mod_name="$(basename "$mod_dir")"
-		local mod_bin_dir="${HOME}/.confiles/mods/.${mod_name}-bin/${DST_OS}/${DST_ARCH}"
-		if [ -d "$mod_bin_dir" ]; then
+		local mod_bin_dir="$(get_mod_bin_dir "$mod_dir")"
+		if [ -n "$mod_bin_dir" ]; then
 			echo ">>> $mod_bin_dir"
 			cf_apply "$mod_bin_dir" "$dst_dir"
 		fi
