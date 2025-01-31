@@ -11,7 +11,7 @@ if ! [ -d "${HOME}/.confiles/mods/base" ]; then
 fi
 
 get_usage() {
-	echo "Usage: $0 {status|apply} [-v|--verbose] [dst_dir]"
+	echo "Usage: $0 {status|apply|src_check} [--verbose|-v] [dst_dir]"
 }
 
 OPT_VERBOSE=false
@@ -41,7 +41,10 @@ while true; do
 	esac
 done
 
+# static vars
+
 CURR_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" &>/dev/null && pwd)"
+SRC_MODS_DIR="${HOME}/.confiles/mods"
 
 DST_DIR_PROVIDED=''
 DST_DIR=''
@@ -88,7 +91,7 @@ fi
 DST_OS="$(awk '{print $1}' <<<$DST_UNAME)"
 DST_ARCH="$(awk '{print $2}' <<<$DST_UNAME)"
 
-# infos
+# print infos
 if $OPT_VERBOSE; then
 	echo "DST_DIR=$DST_DIR"
 	echo "DST_UNAME=$DST_UNAME"
@@ -96,10 +99,36 @@ if $OPT_VERBOSE; then
 	echo "DST_ARCH=$DST_ARCH"
 fi
 
-get_mod_bin_dir(){
+# fuctions
+
+colorize() {
+	local text="$1"
+	local color="$2"
+
+	case "$color" in
+	black) echo -e "\033[0;30m$text\033[0m" ;;
+	red) echo -e "\033[0;31m$text\033[0m" ;;
+	green) echo -e "\033[0;32m$text\033[0m" ;;
+	yellow) echo -e "\033[0;33m$text\033[0m" ;;
+	blue) echo -e "\033[0;34m$text\033[0m" ;;
+	magenta) echo -e "\033[0;35m$text\033[0m" ;;
+	cyan) echo -e "\033[0;36m$text\033[0m" ;;
+	white) echo -e "\033[0;37m$text\033[0m" ;;
+	*) echo "$text" ;;
+	esac
+}
+
+to_red() {
+    echo "$(colorize "$1" red)"
+}
+to_green() {
+    echo "$(colorize "$1" green)"
+}
+
+get_mod_bin_dir() {
 	local mod_dir="$1"
 	local mod_name="$(basename "$mod_dir")"
-	local mod_bin_dir="${HOME}/.confiles/mods/.${mod_name}-bin/${DST_OS}/${DST_ARCH}"
+	local mod_bin_dir="${SRC_MODS_DIR}/.${mod_name}-bin/${DST_OS}/${DST_ARCH}"
 	if [ -d "$mod_bin_dir" ]; then
 		echo "$mod_bin_dir"
 		return 0
@@ -114,9 +143,7 @@ cf_status() {
 		dst_dir="$HOME"
 	fi
 
-	local cmd="rsync -avO --no-o --no-g -ni ${mod_dir}/home/ ${dst_dir}/"
-	# echo "$cmd"
-	eval "$cmd"
+	rsync -avO --no-o --no-g -ni "${mod_dir}/home/" "${dst_dir}/"
 }
 
 cf_apply() {
@@ -131,7 +158,7 @@ cf_apply() {
 
 status_all() {
 	local dst_dir="$1"
-	for mod_dir in "${HOME}/.confiles/mods/"*; do
+	for mod_dir in "${SRC_MODS_DIR}/"*; do
 		echo ">>> $mod_dir"
 		cf_status "$mod_dir" "$dst_dir"
 
@@ -146,7 +173,7 @@ status_all() {
 
 apply_all() {
 	local dst_dir="$1"
-	for mod_dir in "${HOME}/.confiles/mods/"*; do
+	for mod_dir in "${SRC_MODS_DIR}"*; do
 		echo ">>> $mod_dir"
 		cf_apply "$mod_dir" "$dst_dir"
 
@@ -159,6 +186,41 @@ apply_all() {
 	done
 }
 
+# check if files duplicate
+src_check_file_dup() {
+	local list="$(
+		cd "${SRC_MODS_DIR}"
+		find -L . -type f -printf "%P\n" | grep -P '^[^/]*/(Linux|home)'
+	)"
+
+	local duplicated="$(
+		sort -t'/' -k2 <<<"$list" |
+			awk '{
+			key = substr($0, index($0, "/") + 1)
+			if (key == prev) {
+				cnt++
+				if (cnt == 1) print prev_line
+				print $0
+			} else {
+				cnt = 0
+				prev = key
+				prev_line = $0
+			}
+		}'
+	)"
+	if [ -n "$duplicated" ]; then
+		echo "$(to_red "Duplicated files"):"
+		echo "$duplicated"
+		return 1
+	else
+		echo "$(to_green "No duplicated files")"
+		return 0
+	fi
+}
+src_check() {
+	src_check_file_dup
+}
+
 # main
 case "$1" in
 status)
@@ -167,8 +229,13 @@ status)
 apply)
 	apply_all "$2"
 	;;
+src_check)
+	src_check
+	;;
 *)
 	echo "$(get_usage)" >&2
 	exit 1
 	;;
 esac
+
+exit 0
