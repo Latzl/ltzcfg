@@ -10,3 +10,6 @@
 [submodule "confiles/mods/base/home/.tmux/plugins/tmux-sensible"]
 	path = confiles/mods/base/home/.tmux/plugins/tmux-sensible
 	url = https://github.com/tmux-plugins/tmux-sensible.git
+[submodule "confiles/mods/base/home/.vim/pack/confiles/start/fzf.vim"]
+	path = confiles/mods/base/home/.vim/pack/confiles/start/fzf.vim
+	url = https://github.com/junegunn/fzf.vim.git

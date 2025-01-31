@@ -173,7 +173,7 @@ status_all() {
 
 apply_all() {
 	local dst_dir="$1"
-	for mod_dir in "${SRC_MODS_DIR}"*; do
+	for mod_dir in "${SRC_MODS_DIR}/"*; do
 		echo ">>> $mod_dir"
 		cf_apply "$mod_dir" "$dst_dir"
 
