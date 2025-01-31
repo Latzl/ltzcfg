@@ -164,7 +164,7 @@ status_all() {
 
 		# bin
 		local mod_bin_dir="$(get_mod_bin_dir "$mod_dir")"
-		if [ -n "$mod_bin_dir" ]; then
+		if [ -d "$mod_bin_dir" ]; then
 			echo ">>> $mod_bin_dir"
 			cf_status "$mod_bin_dir" "$dst_dir"
 		fi
@@ -179,7 +179,7 @@ apply_all() {
 
 		# bin
 		local mod_bin_dir="$(get_mod_bin_dir "$mod_dir")"
-		if [ -n "$mod_bin_dir" ]; then
+		if [ -d "$mod_bin_dir" ]; then
 			echo ">>> $mod_bin_dir"
 			cf_apply "$mod_bin_dir" "$dst_dir"
 		fi
