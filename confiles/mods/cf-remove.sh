@@ -2,7 +2,7 @@
 # remove all confiles this mod contains
 # place this script to ${mod_dir}, run it
 
-CURR_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" &>/dev/null && pwd)"
+CURR_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 DST_UNAME=$(uname -sm)
 DST_OS="$(awk '{print $1}' <<<$DST_UNAME)"
 DST_ARCH="$(awk '{print $2}' <<<$DST_UNAME)"

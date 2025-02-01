@@ -38,7 +38,7 @@ done
 
 # static vars
 
-CURR_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" &>/dev/null && pwd)"
+CURR_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 SRC_MODS_DIR="${HOME}/.confiles/mods"
 
 DST_DIR_PROVIDED=''

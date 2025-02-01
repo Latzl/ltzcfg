@@ -1,1 +1,2 @@
 eval "$(fzf --bash)"
+FZF_DEFAULT_OPTS_FILE=~/.config/fzf/default_opt

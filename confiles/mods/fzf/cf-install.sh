@@ -2,5 +2,5 @@
 
 MOD_NAME=fzf
 
-CURR_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" &>/dev/null && pwd)"
+CURR_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 source ../../cf-base.sh
