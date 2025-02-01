@@ -119,10 +119,10 @@ colorize() {
 }
 
 to_red() {
-    echo "$(colorize "$1" red)"
+	echo "$(colorize "$1" red)"
 }
 to_green() {
-    echo "$(colorize "$1" green)"
+	echo "$(colorize "$1" green)"
 }
 
 get_mod_bin_dir() {
