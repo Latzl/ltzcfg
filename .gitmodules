@@ -13,3 +13,6 @@
 [submodule "confiles/mods/fzf/home/.vim/pack/confiles/start/fzf.vim"]
 	path = confiles/mods/fzf/home/.vim/pack/confiles/start/fzf.vim
 	url = https://github.com/junegunn/fzf.vim.git
+[submodule "confiles/mods/fzf/home/.tmux/plugins/tmux-fzf"]
+	path = confiles/mods/fzf/home/.tmux/plugins/tmux-fzf
+	url = https://github.com/sainnhe/tmux-fzf.git
