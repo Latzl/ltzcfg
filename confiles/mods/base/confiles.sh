@@ -126,22 +126,30 @@ get_mod_platform_dir() {
 
 cf_status() {
 	local mod_dir="$1"
+	local src_dir="$mod_dir/home"
 	local dst_dir="$2"
+	if ! [ -d "$src_dir" ]; then
+		return 1
+	fi
 	if ! [ -n "$dst_dir" ]; then
 		dst_dir="$HOME"
 	fi
 
-	rsync -avO --no-o --no-g -ni "${mod_dir}/home/" "${dst_dir}/"
+	rsync -avO --no-o --no-g -ni "${src_dir}/" "${dst_dir}/"
 }
 
 cf_apply() {
 	local mod_dir="$1"
+	local src_dir="$mod_dir/home"
 	local dst_dir="$2"
+	if ! [ -d "$src_dir" ]; then
+		return 1
+	fi
 	if ! [ -n "$dst_dir" ]; then
 		dst_dir="$HOME"
 	fi
 
-	rsync -avO --no-o --no-g "${mod_dir}/home/" "${dst_dir}/"
+	rsync -avO --no-o --no-g "${src_dir}/" "${dst_dir}/"
 }
 
 status_all() {
