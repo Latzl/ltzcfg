@@ -5,11 +5,6 @@ if ! which rsync &>/dev/null; then
 	exit 1
 fi
 
-if ! [ -d "${HOME}/.confiles/mods/base" ]; then
-	echo "base confiles not found" >&2
-	exit 1
-fi
-
 get_usage() {
 	echo "Usage: $0 {status|apply|src_check} [--verbose|-v] [dst_dir]"
 }
@@ -66,7 +61,7 @@ else
 	DST_DIR="$HOME"
 fi
 
-if grep -q ":" <<<"$DST_DIR"; then # remote
+if grep -q ":" <<<"$DST_DIR"; then
 	IS_DST_REMOTE=true
 else
 	IS_DST_REMOTE=false
@@ -79,7 +74,7 @@ else
 fi
 
 if $DST_DIR_PROVIDED; then
-	if grep -q ":" <<<"$DST_DIR"; then # remote
+	if $IS_DST_REMOTE; then
 		DST_UNAME=$(ssh $DST_HOST 'uname -sm')
 	else
 		DST_UNAME=$(uname -sm)
@@ -125,15 +120,8 @@ to_green() {
 	echo "$(colorize "$1" green)"
 }
 
-get_mod_bin_dir() {
-	local mod_dir="$1"
-	local mod_name="$(basename "$mod_dir")"
-	local mod_bin_dir="${SRC_MODS_DIR}/.${mod_name}-bin/${DST_OS}/${DST_ARCH}"
-	if [ -d "$mod_bin_dir" ]; then
-		echo "$mod_bin_dir"
-		return 0
-	fi
-	return 1
+get_mod_platform_dir() {
+	echo "$1/platforms/${DST_OS}/${DST_ARCH}"
 }
 
 cf_status() {
@@ -162,11 +150,11 @@ status_all() {
 		echo ">>> $mod_dir"
 		cf_status "$mod_dir" "$dst_dir"
 
-		# bin
-		local mod_bin_dir="$(get_mod_bin_dir "$mod_dir")"
-		if [ -d "$mod_bin_dir" ]; then
-			echo ">>> $mod_bin_dir"
-			cf_status "$mod_bin_dir" "$dst_dir"
+		# platform
+		local mod_platform_dir="$(get_mod_platform_dir "$mod_dir")"
+		if [ -d "$mod_platform_dir" ]; then
+			echo ">>> $mod_platform_dir"
+			cf_status "$mod_platform_dir" "$dst_dir"
 		fi
 	done
 }
@@ -177,11 +165,11 @@ apply_all() {
 		echo ">>> $mod_dir"
 		cf_apply "$mod_dir" "$dst_dir"
 
-		# bin
-		local mod_bin_dir="$(get_mod_bin_dir "$mod_dir")"
-		if [ -d "$mod_bin_dir" ]; then
-			echo ">>> $mod_bin_dir"
-			cf_apply "$mod_bin_dir" "$dst_dir"
+		# platform
+		local mod_platform_dir="$(get_mod_platform_dir "$mod_dir")"
+		if [ -d "$mod_platform_dir" ]; then
+			echo ">>> $mod_platform_dir"
+			cf_apply "$mod_platform_dir" "$dst_dir"
 		fi
 	done
 }

@@ -12,6 +12,7 @@ MOD_CF_DIR=${CURR_DIR}
 MOD_CF_HOME=${MOD_CF_DIR}/home
 CF_DIR=${HOME}/.confiles
 CF_MOD_DIR=${CF_DIR}/mods/${MOD_NAME}
+mkdir -p "${CF_DIR}/mods"
 
 if [ -d "${CF_MOD_DIR}" ]; then
 	rm -r "${CF_MOD_DIR}"
