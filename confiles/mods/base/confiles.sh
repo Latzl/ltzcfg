@@ -52,7 +52,7 @@ DST_ARCH=''
 if [ -n "$2" ]; then
 	DST_DIR_PROVIDED=true
 else
-	DST_DIR=false
+	DST_DIR_PROVIDED=false
 fi
 
 if $DST_DIR_PROVIDED; then
@@ -135,7 +135,7 @@ cf_status() {
 		dst_dir="$HOME"
 	fi
 
-	rsync -avO --no-o --no-g -ni "${src_dir}/" "${dst_dir}/"
+	rsync -avO --no-o --no-g --info=FLIST0,STATS0 -ni "${src_dir}/" "${dst_dir}/"
 }
 
 cf_apply() {
@@ -149,35 +149,57 @@ cf_apply() {
 		dst_dir="$HOME"
 	fi
 
-	rsync -avO --no-o --no-g "${src_dir}/" "${dst_dir}/"
+	rsync -avO --no-o --no-g --info=FLIST0,STATS0 "${src_dir}/" "${dst_dir}/"
 }
 
 status_all() {
 	local dst_dir="$1"
+	local content=''
 	for mod_dir in "${SRC_MODS_DIR}/"*; do
-		echo ">>> $mod_dir"
-		cf_status "$mod_dir" "$dst_dir"
+		content="$(cf_status "$mod_dir" "$dst_dir")"
+		if [ -n "$content" ] || $OPT_VERBOSE; then
+			echo ">>> $mod_dir"
+		fi
+		if [ -n "$content" ]; then
+			echo "$content"
+		fi
 
 		# platform
 		local mod_platform_dir="$(get_mod_platform_dir "$mod_dir")"
 		if [ -d "$mod_platform_dir" ]; then
-			echo ">>> $mod_platform_dir"
-			cf_status "$mod_platform_dir" "$dst_dir"
+			content="$(cf_status "$mod_platform_dir" "$dst_dir")"
+			if [ -n "$content" ] || $OPT_VERBOSE; then
+				echo ">>> $mod_platform_dir"
+			fi
+			if [ -n "$content" ]; then
+				echo "$content"
+			fi
 		fi
 	done
 }
 
 apply_all() {
 	local dst_dir="$1"
+	local content=''
 	for mod_dir in "${SRC_MODS_DIR}/"*; do
-		echo ">>> $mod_dir"
-		cf_apply "$mod_dir" "$dst_dir"
+		content="$(cf_apply "$mod_dir" "$dst_dir")"
+		if [ -n "$content" ] || $OPT_VERBOSE; then
+			echo ">>> $mod_dir"
+		fi
+		if [ -n "$content" ]; then
+			echo "$content"
+		fi
 
 		# platform
 		local mod_platform_dir="$(get_mod_platform_dir "$mod_dir")"
 		if [ -d "$mod_platform_dir" ]; then
-			echo ">>> $mod_platform_dir"
-			cf_apply "$mod_platform_dir" "$dst_dir"
+			content="$(cf_apply "$mod_platform_dir" "$dst_dir")"
+			if [ -n "$content" ] || $OPT_VERBOSE; then
+				echo ">>> $mod_platform_dir"
+			fi
+			if [ -n "$content" ]; then
+				echo "$content"
+			fi
 		fi
 	done
 }
