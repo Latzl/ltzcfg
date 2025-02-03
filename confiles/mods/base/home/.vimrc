@@ -22,3 +22,5 @@ set ignorecase
 set paste
 
 set wildmode=list:longest
+
+let mapleader = "\<Space>"

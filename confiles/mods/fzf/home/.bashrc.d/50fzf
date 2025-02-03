@@ -1,2 +1,2 @@
 eval "$(fzf --bash)"
-FZF_DEFAULT_OPTS_FILE=~/.config/fzf/default_opt
+export FZF_DEFAULT_OPTS_FILE="$HOME/.config/fzf/default_opt"

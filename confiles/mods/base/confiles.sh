@@ -135,7 +135,7 @@ cf_status() {
 		dst_dir="$HOME"
 	fi
 
-	rsync -avO --no-o --no-g --info=FLIST0,STATS0 -ni "${src_dir}/" "${dst_dir}/"
+	rsync -avzO --no-o --no-g --info=FLIST0,STATS0 -ni "${src_dir}/" "${dst_dir}/"
 }
 
 cf_apply() {
@@ -149,7 +149,7 @@ cf_apply() {
 		dst_dir="$HOME"
 	fi
 
-	rsync -avO --no-o --no-g --info=FLIST0,STATS0 "${src_dir}/" "${dst_dir}/"
+	rsync -avzO --no-o --no-g --info=FLIST0,STATS0 "${src_dir}/" "${dst_dir}/"
 }
 
 status_all() {
