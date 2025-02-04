@@ -1,1 +1,0 @@
-set rtp+=~/.vim/pack/confiles/start/fzf

@@ -1,27 +1,3 @@
 [submodule "xxh/home/.xxh/.xxh/shells/xxh-shell-bash"]
 	path = xxh/home/.xxh/.xxh/shells/xxh-shell-bash
 	url = https://github.com/xxh/xxh-shell-bash.git
-[submodule "confiles/mods/fzf/home/.vim/pack/confiles/start/fzf.vim"]
-	path = confiles/mods/fzf/home/.vim/pack/confiles/start/fzf.vim
-	url = https://github.com/junegunn/fzf.vim.git
-[submodule "confiles/mods/fzf/home/.tmux/plugins/tmux-fzf"]
-	path = confiles/mods/fzf/home/.tmux/plugins/tmux-fzf
-	url = https://github.com/sainnhe/tmux-fzf.git
-[submodule "confiles/mods/vim/home/.vim/pack/confiles/start/readline.vim"]
-	path = confiles/mods/vim/home/.vim/pack/confiles/start/readline.vim
-	url = https://github.com/ryvnf/readline.vim.git
-[submodule "confiles/mods/vim/home/.vim/pack/confiles/start/vim-easymotion"]
-	path = confiles/mods/vim/home/.vim/pack/confiles/start/vim-easymotion
-	url = https://github.com/easymotion/vim-easymotion.git
-[submodule "confiles/mods/vim/home/.vim/pack/confiles/start/vim-which-key"]
-	path = confiles/mods/vim/home/.vim/pack/confiles/start/vim-which-key
-	url = https://github.com/liuchengxu/vim-which-key.git
-[submodule "confiles/mods/tmux/home/.tmux/plugins/tmux-resurrect"]
-	path = confiles/mods/tmux/home/.tmux/plugins/tmux-resurrect
-	url = https://github.com/tmux-plugins/tmux-resurrect.git
-[submodule "confiles/mods/tmux/home/.tmux/plugins/tmux-sensible"]
-	path = confiles/mods/tmux/home/.tmux/plugins/tmux-sensible
-	url = https://github.com/tmux-plugins/tmux-sensible.git
-[submodule "confiles/mods/tmux/home/.tmux/plugins/tpm"]
-	path = confiles/mods/tmux/home/.tmux/plugins/tpm
-	url = https://github.com/tmux-plugins/tpm.git
