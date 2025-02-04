@@ -5,5 +5,5 @@ MOD_NAME="$(basename "$CURR_DIR")"
 source "$CURR_DIR/../../cf-base.sh"
 
 mkdir -p ~/bin
-# install ${CURR_DIR}/confiles.sh ~/bin/
-ln -svf "${CURR_DIR}/confiles.sh" ~/bin/
+# install ${CURR_DIR}/confiles.sh ~/.confiles/bin/
+ln -svf "${CURR_DIR}/confiles.sh" ~/.confiles/bin/
