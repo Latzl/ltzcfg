@@ -1,9 +1,8 @@
 #!/bin/bash
 
-MOD_NAME=base
-
 CURR_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" &>/dev/null && pwd)"
-source ../../cf-base.sh
+MOD_NAME="$(basename "$CURR_DIR")"
+source "$CURR_DIR/../../cf-base.sh"
 
 mkdir -p ~/bin
 # install ${CURR_DIR}/confiles.sh ~/bin/

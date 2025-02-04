@@ -16,3 +16,12 @@
 [submodule "confiles/mods/fzf/home/.tmux/plugins/tmux-fzf"]
 	path = confiles/mods/fzf/home/.tmux/plugins/tmux-fzf
 	url = https://github.com/sainnhe/tmux-fzf.git
+[submodule "confiles/mods/vim/home/.vim/pack/confiles/start/readline.vim"]
+	path = confiles/mods/vim/home/.vim/pack/confiles/start/readline.vim
+	url = https://github.com/ryvnf/readline.vim.git
+[submodule "confiles/mods/vim/home/.vim/pack/confiles/start/vim-easymotion"]
+	path = confiles/mods/vim/home/.vim/pack/confiles/start/vim-easymotion
+	url = https://github.com/easymotion/vim-easymotion.git
+[submodule "confiles/mods/vim/home/.vim/pack/confiles/start/vim-which-key"]
+	path = confiles/mods/vim/home/.vim/pack/confiles/start/vim-which-key
+	url = https://github.com/liuchengxu/vim-which-key.git
